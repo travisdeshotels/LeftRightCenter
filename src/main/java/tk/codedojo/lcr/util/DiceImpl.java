@@ -1,9 +1,11 @@
 package tk.codedojo.lcr.util;
 
+import org.springframework.stereotype.Component;
 import tk.codedojo.lcr.beans.DiceValues;
 
 import java.util.Random;
 
+@Component
 public class DiceImpl implements Dice{
 
     private Random random;
