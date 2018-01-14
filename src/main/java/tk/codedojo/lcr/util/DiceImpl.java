@@ -1,12 +1,14 @@
-package tk.codedojo.lcr.beans;
+package tk.codedojo.lcr.util;
+
+import tk.codedojo.lcr.beans.DiceValues;
 
 import java.util.Random;
 
-public class Dice {
+public class DiceImpl implements Dice{
 
     private Random random;
 
-    public Dice(){
+    public DiceImpl(){
         random = new Random();
     }
 

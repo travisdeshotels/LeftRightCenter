@@ -1,11 +1,13 @@
 package tk.codedojo.lcr.driver;
 
 import tk.codedojo.lcr.beans.*;
+import tk.codedojo.lcr.util.Dice;
+import tk.codedojo.lcr.util.DiceImpl;
 
 public class Driver {
 
     private static Player[] players = new Player[2];
-    private static Dice dice = new Dice();
+    private static Dice dice = new DiceImpl();
 
     private static void passLeft(int playerIndex){
         if (playerIndex == 0){
