@@ -7,7 +7,6 @@ import java.util.Random;
 
 @Component
 public class DiceImpl implements Dice{
-
     private Random random;
 
     public DiceImpl(){
