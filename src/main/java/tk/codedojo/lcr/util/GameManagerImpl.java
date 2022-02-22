@@ -49,11 +49,11 @@ public class GameManagerImpl implements GameManager {
                     System.out.println("Game restarts!");
                     System.exit(0);
                 }
+                if(gameHelper.isLastRoll()){
+                    endGame();
+                }
                 System.out.println("player" + i + " has " + gameHelper.getPlayerCoins(i-1) + " coins left");
                 for (int rolls = 0; rolls < gameHelper.getNumberOfRolls(gameHelper.getPlayerCoins(i-1)); rolls++) {
-                    if(gameHelper.isLastRoll()){
-                        endGame();
-                    }
                     System.out.println(gameHelper.processRoll(dice.roll(), i));
                 }
                 gameHelper.removeCoinsFromPlayer(i-1);
