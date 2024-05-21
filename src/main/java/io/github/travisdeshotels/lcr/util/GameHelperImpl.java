@@ -1,8 +1,8 @@
-package tk.codedojo.lcr.util;
+package io.github.travisdeshotels.lcr.util;
 
+import io.github.travisdeshotels.lcr.beans.DiceValues;
+import io.github.travisdeshotels.lcr.beans.Player;
 import org.springframework.stereotype.Component;
-import tk.codedojo.lcr.beans.DiceValues;
-import tk.codedojo.lcr.beans.Player;
 
 @Component
 public class GameHelperImpl implements GameHelper{

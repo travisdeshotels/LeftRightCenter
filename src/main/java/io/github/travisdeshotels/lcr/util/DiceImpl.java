@@ -1,7 +1,7 @@
-package tk.codedojo.lcr.util;
+package io.github.travisdeshotels.lcr.util;
 
+import io.github.travisdeshotels.lcr.beans.DiceValues;
 import org.springframework.stereotype.Component;
-import tk.codedojo.lcr.beans.DiceValues;
 
 import java.util.Random;
 

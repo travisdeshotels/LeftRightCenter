@@ -1,5 +1,9 @@
-package tk.codedojo.lcr.test;
+package io.github.travisdeshotels.lcr.test;
 
+import io.github.travisdeshotels.lcr.beans.DiceValues;
+import io.github.travisdeshotels.lcr.util.Dice;
+import io.github.travisdeshotels.lcr.util.GameHelperImpl;
+import io.github.travisdeshotels.lcr.util.GameManagerImpl;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,8 +11,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.runners.MockitoJUnitRunner;
-import tk.codedojo.lcr.beans.DiceValues;
-import tk.codedojo.lcr.util.*;
 
 import static org.mockito.Mockito.doReturn;
 

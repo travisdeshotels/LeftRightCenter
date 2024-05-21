@@ -1,8 +1,8 @@
-package tk.codedojo.lcr.util;
+package io.github.travisdeshotels.lcr.util;
 
+import io.github.travisdeshotels.lcr.beans.DiceValues;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import tk.codedojo.lcr.beans.DiceValues;
 
 @Component
 public class GameManagerImpl implements GameManager {

@@ -1,6 +1,6 @@
-package tk.codedojo.lcr.util;
+package io.github.travisdeshotels.lcr.util;
 
-import tk.codedojo.lcr.beans.DiceValues;
+import io.github.travisdeshotels.lcr.beans.DiceValues;
 
 public interface GameHelper {
     int getNumberOfRolls(int coins);

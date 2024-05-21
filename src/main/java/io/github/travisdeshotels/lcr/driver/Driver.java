@@ -1,8 +1,8 @@
-package tk.codedojo.lcr.driver;
+package io.github.travisdeshotels.lcr.driver;
 
+import io.github.travisdeshotels.lcr.util.GameManager;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import tk.codedojo.lcr.util.GameManager;
 
 public class Driver {
     public static void main(String[] args){

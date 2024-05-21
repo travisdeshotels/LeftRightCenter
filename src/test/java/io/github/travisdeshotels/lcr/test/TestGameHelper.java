@@ -1,11 +1,11 @@
-package tk.codedojo.lcr.test;
+package io.github.travisdeshotels.lcr.test;
 
+import io.github.travisdeshotels.lcr.beans.DiceValues;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import tk.codedojo.lcr.beans.DiceValues;
-import tk.codedojo.lcr.util.GameHelper;
-import tk.codedojo.lcr.util.GameHelperImpl;
+import io.github.travisdeshotels.lcr.util.GameHelper;
+import io.github.travisdeshotels.lcr.util.GameHelperImpl;
 
 public class TestGameHelper {
     @Test

@@ -1,4 +1,4 @@
-package tk.codedojo.lcr.beans;
+package io.github.travisdeshotels.lcr.beans;
 
 public class Player {
     private int coins;
