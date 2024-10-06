@@ -4,14 +4,22 @@ import io.github.travisdeshotels.lcr.beans.DiceValues;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+
 @Component
 public class GameManagerImpl implements GameManager {
     @Autowired
-    private Dice dice;
-    @Autowired
     private GameHelper gameHelper;
+    private final Dice dice;
 
     public GameManagerImpl(){
+        final Random rand = new Random();
+        final List<DiceValues> VALUES = Collections.unmodifiableList(Arrays.asList(DiceValues.values()));
+        final int SIZE = VALUES.size();
+        dice = () -> VALUES.get(rand.nextInt(SIZE));
     }
 
     private void endGame() {
