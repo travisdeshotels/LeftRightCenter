@@ -14,12 +14,14 @@ public class GameManagerImpl implements GameManager {
     @Autowired
     private GameHelper gameHelper;
     private final Dice dice;
+    private final GameOutput out;
 
     public GameManagerImpl(){
         final Random rand = new Random();
         final List<DiceValues> VALUES = Collections.unmodifiableList(Arrays.asList(DiceValues.values()));
         final int SIZE = VALUES.size();
         dice = () -> VALUES.get(rand.nextInt(SIZE));
+        out = System.out::println;
     }
 
     private void endGame() {
@@ -27,21 +29,21 @@ public class GameManagerImpl implements GameManager {
 
         while (true) {
             for (int i = 1; i < gameHelper.getNumberOfPlayers()+1; i++) {
-                System.out.println("player" + i + " is rolling with the last coin!");
+                out.print("player" + i + " is rolling with the last coin!");
                 roll = dice.roll();
                 if (roll == DiceValues.CENTER) {
-                    System.out.println("Game restarts!");
+                    out.print("Game restarts!");
                     System.exit(0);
                 } else if (roll == DiceValues.LEFT) {
-                    System.out.println("player" + i + " LEFT");
+                    out.print("player" + i + " LEFT");
                     gameHelper.passLeft(i - 1);
                     gameHelper.removeCoinsFromPlayer(i-1, 1);
                 } else if (roll == DiceValues.RIGHT) {
-                    System.out.println("player" + i + " RIGHT");
+                    out.print("player" + i + " RIGHT");
                     gameHelper.passLeft(i - 1);
                     gameHelper.removeCoinsFromPlayer(i-1, 1);
                 } else {
-                    System.out.println("player" + i + " WINS!");
+                    out.print("player" + i + " WINS!");
                     System.exit(0);
                 }
             }
@@ -54,15 +56,15 @@ public class GameManagerImpl implements GameManager {
             for (int i = 1; i < gameHelper.getNumberOfPlayers()+1; i++) {
                 gameHelper.resetCoinChange();
                 if (!gameHelper.anyCoinsLeft()){
-                    System.out.println("Game restarts!");
+                    out.print("Game restarts!");
                     System.exit(0);
                 }
                 if(gameHelper.isLastRoll()){
                     endGame();
                 }
-                System.out.println("player" + i + " has " + gameHelper.getPlayerCoins(i-1) + " coins left");
+                out.print("player" + i + " has " + gameHelper.getPlayerCoins(i-1) + " coins left");
                 for (int rolls = 0; rolls < gameHelper.getNumberOfRolls(gameHelper.getPlayerCoins(i-1)); rolls++) {
-                    System.out.println(gameHelper.processRoll(dice.roll(), i));
+                    out.print(gameHelper.processRoll(dice.roll(), i));
                 }
                 gameHelper.removeCoinsFromPlayer(i-1);
             }
