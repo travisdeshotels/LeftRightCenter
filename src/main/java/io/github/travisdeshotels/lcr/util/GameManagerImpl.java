@@ -4,6 +4,9 @@ import io.github.travisdeshotels.lcr.beans.DiceValues;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -14,14 +17,44 @@ public class GameManagerImpl implements GameManager {
     @Autowired
     private GameHelper gameHelper;
     private final Dice dice;
-    private final GameOutput out;
+    private GameOutput out;
+    BufferedWriter writer;
 
     public GameManagerImpl(){
         final Random rand = new Random();
         final List<DiceValues> VALUES = Collections.unmodifiableList(Arrays.asList(DiceValues.values()));
         final int SIZE = VALUES.size();
         dice = () -> VALUES.get(rand.nextInt(SIZE));
-        out = System.out::println;
+        if (System.getenv("FILENAME") == null){
+            out = System.out::println;
+        } else{
+            setupFileOutput();
+        }
+    }
+
+    private void setupFileOutput(){
+        try {
+            writer = new BufferedWriter(new FileWriter(System.getenv("FILENAME")));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        out = str -> {
+            try {
+                System.out.println(str);
+                writer.write(str + "\n");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        };
+    }
+
+    private void closeWriter(){
+        try {
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void endGame() {
@@ -44,6 +77,7 @@ public class GameManagerImpl implements GameManager {
                     gameHelper.removeCoinsFromPlayer(i-1, 1);
                 } else {
                     out.print("player" + i + " WINS!");
+                    closeWriter();
                     System.exit(0);
                 }
             }
