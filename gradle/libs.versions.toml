@@ -1,0 +1,14 @@
+[versions]
+junit = "4.13.2"
+spring = "7.1.0"
+mockito = "1.10.19"
+logging = "1.4.0"
+
+[libraries]
+commons-logging = { module = "commons-logging:commons-logging", version.ref = "logging" }
+junit = { module = "junit:junit", version.ref = "junit" }
+mockito-all = { module = "org.mockito:mockito-all", version.ref = "mockito" }
+spring-beans = { module = "org.springframework:spring-beans", version.ref = "spring" }
+spring-context = { module = "org.springframework:spring-context", version.ref = "spring" }
+spring-context-support = { module = "org.springframework:spring-context-support", version.ref = "spring" }
+spring-core = { module = "org.springframework:spring-core", version.ref = "spring" }
